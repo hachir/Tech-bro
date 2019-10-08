@@ -23,3 +23,25 @@ app.use(express.static("public"));
 
 // Configure logging middleware
 app.use(logger('dev'));
+
+// Configure handlebars templating engine
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
+//setting up routes
+app.use('/', indexRouter);
+app.use('/api', apiRouter);
+app.use('/scrape', scrapeRouter);
+
+
+// Configure and connect to MongoDB
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/news";
+
+mongoose.connect(MONGODB_URI)
+    .then(() => console.log('Connected to database'))
+    .catch(err => console.log(err));
+
+// Start express server
+app.listen(PORT, function () {
+    console.log(`App listening on port ${PORT}`);
+});
