@@ -38,3 +38,30 @@ router.get("/articles/:id/notes", (req, res) => {
         res.status(500).send(err);
     });
 });
+
+// Create a note for to a specific article
+router.post("/articles/:id/notes", (req, res) => {
+
+    db.Note.create(req.body)
+        .then((note) => {
+            // If the note was created, add it to the selected Article
+            return db.Article.findOneAndUpdate({_id: req.params.id}, {$push: {notes: note._id}}, {new: true}).populate("notes");
+        })
+        .then(article => res.json(article))
+        .catch(err => res.json(err));
+});
+
+// Delete note from article
+router.delete("/articles/:articleId/notes/:noteId", (req, res) => {
+
+    db.Note.remove({_id: req.params.noteId})
+        .then(() => {
+            // Remove note from the referencing article
+            return db.Article.findOneAndUpdate({_id: req.params.articleId}, {$pull: {notes: {_id: req.params.noteId}}}, {new: true}).populate("notes");
+        })
+        .then(article => res.json(article))
+        .catch(err => res.json(err));
+});
+
+
+module.exports = router;
