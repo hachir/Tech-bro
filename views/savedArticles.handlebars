@@ -10,6 +10,33 @@
     </ul>
 </nav>
 
+<!--Display each article-->
+{{#each articles}}
+    <article class="card m-3 p-2 article">
+        <div class="row no-gutters">
+            <figure class="col-auto">
+                <img src="{{imageUrl}}" class="img-fluid" alt="Article Image">
+            </figure>
+            <div class="col">
+                <div class="card-block p-2">
+                    <a href="{{link}}"><h4 class="card-title">{{title}}</h4></a>
+                    <p class="card-text">{{summary}}</p>
+                    <button class="saveArticle btn btn-danger float-right mr-3" data-id="{{_id}}"
+                            data-saved="true">Remove Saved
+                    </button>
+                    <button class="view-notes btn btn-secondary float-right mr-3" data-id="{{_id}}">
+                        Article Notes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </article>
+{{else}}
+    <div class="alert alert-warning" role="alert">
+        You have no saved articles...
+    </div>
+{{/each}}
+
 <!--Error modal-->
 <div id="error" class="modal fade" role="dialog">
     <div class="modal-dialog modal-md">
