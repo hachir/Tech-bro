@@ -28,3 +28,6 @@ Handlebars Templates and Layouts (Client and Server-side)
 MongoDB / mLab
 
 Mongoose (Object Document Mapper)
+
+![architecture](https://user-images.githubusercontent.com/46425523/67815393-705bff00-fa6c-11e9-9476-03df0ee35cb6.png)
+
