@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maxrjohnson23/News-Aggregator.git"
+    "url": "git+https://github.com/"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/maxrjohnson23/News-Aggregator/issues"
+    "url": "https://github.com//issues"
   },
-  "homepage": "https://github.com/maxrjohnson23/News-Aggregator#readme",
+  "homepage": "https://github.com#readme",
   "dependencies": {
     "body-parser": "latest",
     "cheerio": "^1.0.0-rc.2",
