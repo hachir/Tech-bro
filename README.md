@@ -1,4 +1,4 @@
-#Tech-bro
+#Tech-pluse
 
 An Express/Node application for aggregating tech news articles, backed by MongoDB
 
